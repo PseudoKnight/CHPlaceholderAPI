@@ -2,10 +2,10 @@
 
 ## Function Documentation
 
-**set_placeholders(player, string)**
+**set_placeholders([player], string)**
 
-Replaces all placeholders in the given string. Player can be null. This functionality in PlaceholderAPI automatically
-"colorizes" the returned string.
+Replaces all placeholders in the given string. Player can be null or absent if player context is not necessary for the
+given placeholders. PlaceholderAPI automatically "colorizes" the returned string.
 
 **register_placeholder_hook(identifier, closure)**
 

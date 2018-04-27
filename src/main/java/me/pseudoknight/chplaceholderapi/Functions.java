@@ -41,10 +41,10 @@ public class Functions {
 
 		public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
 			Player p = null;
-			if(!(args[0] instanceof CNull)) {
+			if(args.length == 2 && !(args[0] instanceof CNull)) {
 				p = (Player) Static.GetPlayer(args[0].val(), t).getHandle();
 			}
-			return new CString(PlaceholderAPI.setPlaceholders(p, args[1].val()), t);
+			return new CString(PlaceholderAPI.setPlaceholders(p, args[args.length - 1].val()), t);
 		}
 
 		public String getName() {
@@ -52,12 +52,13 @@ public class Functions {
 		}
 
 		public Integer[] numArgs() {
-			return new Integer[]{2};
+			return new Integer[]{1, 2};
 		}
 
 		public String docs() {
-			return "string {player, string} Replaces all placeholders in the given string. Player can be null."
-					+ " This functionality in PlaceholderAPI automatically \"colorizes\" the returned string.";
+			return "string {[player], string} Replaces all placeholders in the given string."
+					+ " Player can be null or absent if player context is not necessary for the given placeholders."
+					+ " PlaceholderAPI automatically \"colorizes\" the returned string.";
 		}
 
 		public Version since() {
