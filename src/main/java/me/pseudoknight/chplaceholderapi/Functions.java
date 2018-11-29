@@ -2,13 +2,12 @@ package me.pseudoknight.chplaceholderapi;
 
 import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.annotations.api;
-import com.laytonsmith.core.CHVersion;
+import com.laytonsmith.core.MSVersion;
 import com.laytonsmith.core.Static;
 import com.laytonsmith.core.constructs.CClosure;
 import com.laytonsmith.core.constructs.CNull;
 import com.laytonsmith.core.constructs.CString;
 import com.laytonsmith.core.constructs.CVoid;
-import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.CRE.CREFormatException;
@@ -16,8 +15,9 @@ import com.laytonsmith.core.exceptions.CRE.CREPlayerOfflineException;
 import com.laytonsmith.core.exceptions.CRE.CREThrowable;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
+import com.laytonsmith.core.natives.interfaces.Mixed;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 public class Functions {
 	public static String docs() {
@@ -39,10 +39,10 @@ public class Functions {
 			return false;
 		}
 
-		public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
-			Player p = null;
+		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
+			OfflinePlayer p = null;
 			if(args.length == 2 && !(args[0] instanceof CNull)) {
-				p = (Player) Static.GetPlayer(args[0].val(), t).getHandle();
+				p = (OfflinePlayer) Static.GetUser(args[0], t).getHandle();
 			}
 			return new CString(PlaceholderAPI.setPlaceholders(p, args[args.length - 1].val()), t);
 		}
@@ -58,11 +58,12 @@ public class Functions {
 		public String docs() {
 			return "string {[player], string} Replaces all placeholders in the given string."
 					+ " Player can be null or absent if player context is not necessary for the given placeholders."
+					+ " Offline players are supported by some placeholders."
 					+ " PlaceholderAPI automatically \"colorizes\" the returned string.";
 		}
 
 		public Version since() {
-			return CHVersion.V3_3_2;
+			return MSVersion.V3_3_2;
 		}
 
 	}
@@ -82,7 +83,7 @@ public class Functions {
 			return false;
 		}
 
-		public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
+		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
 			String id = args[0].val();
 			CClosure closure;
 			if(args[1] instanceof CClosure) {
@@ -118,7 +119,7 @@ public class Functions {
 		}
 
 		public Version since() {
-			return CHVersion.V3_3_2;
+			return MSVersion.V3_3_2;
 		}
 
 	}
@@ -138,7 +139,7 @@ public class Functions {
 			return false;
 		}
 
-		public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
+		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
 			PlaceholderAPI.unregisterPlaceholderHook(args[0].val());
 			return CVoid.VOID;
 		}
@@ -156,7 +157,7 @@ public class Functions {
 		}
 
 		public Version since() {
-			return CHVersion.V3_3_2;
+			return MSVersion.V3_3_2;
 		}
 
 	}
