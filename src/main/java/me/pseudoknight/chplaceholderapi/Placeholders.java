@@ -1,6 +1,5 @@
 package me.pseudoknight.chplaceholderapi;
 
-import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.constructs.CClosure;
 import com.laytonsmith.core.constructs.CNull;
 import com.laytonsmith.core.constructs.CString;
@@ -8,16 +7,22 @@ import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.exceptions.FunctionReturnException;
 import com.laytonsmith.core.natives.interfaces.Mixed;
-import me.clip.placeholderapi.external.EZPlaceholderHook;
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
-public class Placeholders extends EZPlaceholderHook {
+public class Placeholders extends PlaceholderExpansion {
 
+	private String identifier;
 	private CClosure closure;
 
 	Placeholders(String identifier, CClosure closure) {
-		super(CommandHelperPlugin.self, identifier);
+		this.identifier = identifier;
 		this.closure = closure;
+	}
+
+	@Override
+	public String getIdentifier() {
+		return identifier;
 	}
 
 	@Override
@@ -41,5 +46,15 @@ public class Placeholders extends EZPlaceholderHook {
 			ConfigRuntimeException.HandleUncaughtException(cre, closure.getEnv());
 		}
 		return null;
+	}
+
+	@Override
+	public String getAuthor() {
+		return "CHPlaceHolderAPI";
+	}
+
+	@Override
+	public String getVersion() {
+		return "0.1.3";
 	}
 }

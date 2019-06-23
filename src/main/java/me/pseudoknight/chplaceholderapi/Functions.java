@@ -95,7 +95,7 @@ public class Functions {
 				PlaceholderAPI.unregisterPlaceholderHook(id);
 			}
 			try {
-				new Placeholders(id, closure).hook();
+				new Placeholders(id, closure).register();
 			} catch(IllegalArgumentException ex){
 				throw new CREFormatException("Invalid identifier.", t);
 			}
