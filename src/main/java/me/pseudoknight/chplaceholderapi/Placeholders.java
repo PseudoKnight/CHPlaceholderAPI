@@ -30,11 +30,11 @@ public class Placeholders extends PlaceholderExpansion {
 		CString string = new CString(s, Target.UNKNOWN);
 		try {
 			if (player == null) {
-				closure.execute(CNull.NULL, string);
+				closure.executeCallable(CNull.NULL, string);
 			} else if(player.isOnline()) {
-				closure.execute(new CString(player.getName(), Target.UNKNOWN), string);
+				closure.executeCallable(new CString(player.getName(), Target.UNKNOWN), string);
 			} else {
-				closure.execute(new CString(player.getUniqueId().toString(), Target.UNKNOWN), string);
+				closure.executeCallable(new CString(player.getUniqueId().toString(), Target.UNKNOWN), string);
 			}
 		} catch (FunctionReturnException e) {
 			Mixed m = e.getReturn();
