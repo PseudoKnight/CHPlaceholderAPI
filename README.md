@@ -33,3 +33,4 @@ register_placeholder_hook('player', closure(@player, @placeholder){
 **unregister_placeholder_hook(identifier)**
 
 Unregisters a PlaceholderAPI identifier.
+Returns true if a placeholder by that id existed.

@@ -4,11 +4,7 @@ import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.MSVersion;
 import com.laytonsmith.core.Static;
-import com.laytonsmith.core.constructs.CClosure;
-import com.laytonsmith.core.constructs.CNull;
-import com.laytonsmith.core.constructs.CString;
-import com.laytonsmith.core.constructs.CVoid;
-import com.laytonsmith.core.constructs.Target;
+import com.laytonsmith.core.constructs.*;
 import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.CRE.CREFormatException;
 import com.laytonsmith.core.exceptions.CRE.CREPlayerOfflineException;
@@ -140,8 +136,7 @@ public class Functions {
 		}
 
 		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
-			PlaceholderAPI.unregisterPlaceholderHook(args[0].val());
-			return CVoid.VOID;
+			return CBoolean.get(PlaceholderAPI.unregisterPlaceholderHook(args[0].val()));
 		}
 
 		public String getName() {
@@ -153,7 +148,8 @@ public class Functions {
 		}
 
 		public String docs() {
-			return "void {identifier} Unregisters a PlaceholderAPI identifier.";
+			return "boolean {identifier} Unregisters a PlaceholderAPI identifier."
+					+ " Returns true if a placeholder by that id existed.";
 		}
 
 		public Version since() {
