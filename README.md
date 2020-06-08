@@ -1,5 +1,8 @@
 # CHPlaceholderAPI
 
+Latest version requires CommandHelper 3.3.4.
+Use version 0.1.1 for earlier versions of CommandHelper.
+
 ## Function Documentation
 
 **set_placeholders([player], string)**
