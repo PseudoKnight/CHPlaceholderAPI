@@ -37,7 +37,7 @@ public class Functions {
 
 		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
 			OfflinePlayer p = null;
-			if(args.length == 2 && !(args[0] instanceof CNull)) {
+			if(args.length == 2 && !(args[0] instanceof CNull) && !args[0].val().equals(Static.getConsoleName())) {
 				p = (OfflinePlayer) Static.GetUser(args[0], t).getHandle();
 			}
 			return new CString(PlaceholderAPI.setPlaceholders(p, args[args.length - 1].val()), t);
