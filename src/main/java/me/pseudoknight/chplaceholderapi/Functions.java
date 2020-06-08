@@ -91,11 +91,10 @@ public class Functions {
 				PlaceholderAPI.unregisterPlaceholderHook(id);
 			}
 			try {
-				new Placeholders(id, closure).register();
+				return CBoolean.get(new Placeholders(id, closure).register());
 			} catch(IllegalArgumentException ex){
 				throw new CREFormatException("Invalid identifier.", t);
 			}
-			return CVoid.VOID;
 		}
 
 		public String getName() {
@@ -107,11 +106,12 @@ public class Functions {
 		}
 
 		public String docs() {
-			return "void {identifier, closure} Registers a PlaceholderAPI identifier. When the identifier is used in a"
+			return "boolean {identifier, closure} Registers a PlaceholderAPI identifier. When the identifier is used in a"
 					+ " placeholder, it executes the given closure. The closure will be passed the player name"
 					+ " (or null) and the particular placeholder name that follows the identifier"
 					+ " (eg. \"%id_placeholder_name%\") as variables. Use return() in the"
-					+ " closure to specify the output for each placeholder name you're checking for.";
+					+ " closure to specify the output for each placeholder name you're checking for."
+					+ " Returns true if the placeholder was successfully registered.";
 		}
 
 		public Version since() {

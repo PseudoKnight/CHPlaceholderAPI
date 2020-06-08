@@ -12,7 +12,7 @@ given placeholders. PlaceholderAPI automatically "colorizes" the returned string
 Registers a PlaceholderAPI identifier. When the identifier is used in a placeholder, it executes the given closure.
 The closure will be passed the player name (or null) and the particular placeholder name that follows the identifier
 (eg. \"%id_placeholder_name%\") as variables. Use return() in the closure to specify the output for each placeholder
-name you're checking for.
+name you're checking for. Returns true if the placeholder was successfully registered.
 
 Example:
 ````
