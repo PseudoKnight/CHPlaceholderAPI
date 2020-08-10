@@ -25,7 +25,7 @@ register_placeholder_hook('player', closure(@player, @placeholder){
         return("");
     }
     if(@placeholder == 'health') {
-        return(pinfo(@player, 5));
+        return(phealth(@player));
     }
     if(@placeholder == 'hunger') {
         return(phunger(@player));

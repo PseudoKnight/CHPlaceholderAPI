@@ -9,21 +9,31 @@ import com.laytonsmith.core.exceptions.CancelCommandException;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.exceptions.ProgramFlowManipulationException;
 import com.laytonsmith.core.natives.interfaces.Mixed;
+import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
+import org.jetbrains.annotations.NotNull;
 
 public class Placeholders extends PlaceholderExpansion {
 
-	private String identifier;
-	private CClosure closure;
+	private final String identifier;
+	private final CClosure closure;
 
 	Placeholders(String identifier, CClosure closure) {
 		this.identifier = identifier;
 		this.closure = closure;
 	}
 
+	public static boolean unregister(String id) {
+		PlaceholderExpansion phe = PlaceholderAPIPlugin.getInstance().getLocalExpansionManager().getExpansion(id);
+		if(phe == null) {
+			return false;
+		}
+		return phe.unregister();
+	}
+
 	@Override
-	public String getIdentifier() {
+	public @NotNull String getIdentifier() {
 		return identifier;
 	}
 
@@ -53,12 +63,12 @@ public class Placeholders extends PlaceholderExpansion {
 	}
 
 	@Override
-	public String getAuthor() {
+	public @NotNull String getAuthor() {
 		return "CHPlaceHolderAPI";
 	}
 
 	@Override
-	public String getVersion() {
-		return "0.1.4";
+	public @NotNull String getVersion() {
+		return "0.1.5";
 	}
 }

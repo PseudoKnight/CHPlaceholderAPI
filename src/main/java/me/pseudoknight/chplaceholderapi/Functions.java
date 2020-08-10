@@ -87,9 +87,6 @@ public class Functions {
 			} else {
 				throw new CREFormatException("This must be a closure.", t);
 			}
-			if(PlaceholderAPI.isRegistered(id)) {
-				PlaceholderAPI.unregisterPlaceholderHook(id);
-			}
 			try {
 				return CBoolean.get(new Placeholders(id, closure).register());
 			} catch(IllegalArgumentException ex){
@@ -136,7 +133,7 @@ public class Functions {
 		}
 
 		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
-			return CBoolean.get(PlaceholderAPI.unregisterPlaceholderHook(args[0].val()));
+			return CBoolean.get(Placeholders.unregister(args[0].val()));
 		}
 
 		public String getName() {
