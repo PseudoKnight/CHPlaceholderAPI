@@ -6,23 +6,21 @@ import com.laytonsmith.core.Static;
 import com.laytonsmith.core.extensions.AbstractExtension;
 import com.laytonsmith.core.extensions.MSExtension;
 
-import java.util.logging.Level;
-
 @MSExtension("CHPlaceholderAPI")
 public class Extension extends AbstractExtension {
 
 	public Version getVersion() {
-		return new SimpleVersion(0,1,5);
+		return new SimpleVersion(0,1,6);
 	}
 
 	@Override
 	public void onStartup() {
-		Static.getLogger().log(Level.INFO, "CHPlaceholderAPI " + getVersion() + " loaded.");
+		Static.getLogger().info("CHPlaceholderAPI " + getVersion() + " loaded.");
 	}
 
 	@Override
 	public void onShutdown() {
-		Static.getLogger().log(Level.INFO, "CHPlaceholderAPI " + getVersion() + " unloaded.");
+		Static.getLogger().info("CHPlaceholderAPI " + getVersion() + " unloaded.");
 	}
 
 }

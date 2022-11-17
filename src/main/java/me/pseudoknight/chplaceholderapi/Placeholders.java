@@ -69,6 +69,11 @@ public class Placeholders extends PlaceholderExpansion {
 
 	@Override
 	public @NotNull String getVersion() {
-		return "0.1.5";
+		return "0.1.6";
+	}
+
+	@Override
+	public boolean persist() {
+		return true;
 	}
 }

@@ -1,6 +1,6 @@
 # CHPlaceholderAPI
 
-Latest version requires CommandHelper 3.3.4.
+Latest version requires CommandHelper 3.3.4 - 3.3.5.
 Use version 0.1.1 for earlier versions of CommandHelper.
 
 ## Function Documentation
