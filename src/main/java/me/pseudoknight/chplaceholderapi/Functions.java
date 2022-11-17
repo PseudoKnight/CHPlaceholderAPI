@@ -13,6 +13,7 @@ import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.natives.interfaces.Mixed;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 
 public class Functions {
@@ -40,7 +41,9 @@ public class Functions {
 			if(args.length == 2 && !(args[0] instanceof CNull) && !args[0].val().equals(Static.getConsoleName())) {
 				p = (OfflinePlayer) Static.GetUser(args[0], t).getHandle();
 			}
-			return new CString(PlaceholderAPI.setPlaceholders(p, args[args.length - 1].val()), t);
+			String message = args[args.length - 1].val();
+			message = ChatColor.translateAlternateColorCodes('&', message);
+			return new CString(PlaceholderAPI.setPlaceholders(p, message), t);
 		}
 
 		public String getName() {
@@ -55,7 +58,7 @@ public class Functions {
 			return "string {[player], string} Replaces all placeholders in the given string."
 					+ " Player can be null or absent if player context is not necessary for the given placeholders."
 					+ " Offline players are supported by some placeholders."
-					+ " PlaceholderAPI automatically \"colorizes\" the returned string.";
+					+ " Automatically \"colorizes\" the returned string.";
 		}
 
 		public Version since() {
