@@ -15,6 +15,12 @@ public class Extension extends AbstractExtension {
 
 	@Override
 	public void onStartup() {
+		try {
+			Class.forName("me.clip.placeholderapi.expansion.PlaceholderExpansion");
+		} catch(ClassNotFoundException ex) {
+			Static.getLogger().severe( "[CHPlaceholderAPI] Dependency is not loaded: PlaceholderAPI plugin.");
+			return;
+		}
 		Static.getLogger().info("CHPlaceholderAPI " + getVersion() + " loaded.");
 	}
 
