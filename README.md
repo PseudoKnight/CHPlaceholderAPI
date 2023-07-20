@@ -4,8 +4,9 @@ An extension to add integration for [PlaceholderAPI](https://www.spigotmc.org/re
 
 Lets you register new placeholders as well as replace placeholders in strings.
 
-Latest version requires CommandHelper 3.3.4 - 3.3.5.
-Use version 0.1.1 for earlier versions of CommandHelper.
+Latest version requires CommandHelper 3.3.5  
+Use version 0.1.6 for CommandHelper 3.3.4  
+Use version 0.1.1 for CommandHelper 3.3.2
 
 ## Function Documentation
 

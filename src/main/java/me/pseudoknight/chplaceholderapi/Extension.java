@@ -10,7 +10,7 @@ import com.laytonsmith.core.extensions.MSExtension;
 public class Extension extends AbstractExtension {
 
 	public Version getVersion() {
-		return new SimpleVersion(0,1,6);
+		return new SimpleVersion(0,1,7);
 	}
 
 	@Override
